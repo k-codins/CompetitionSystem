@@ -1,0 +1,15 @@
+{
+  "name": "katya/competition-system",
+  "authors": [
+    {
+      "name": "Katya Yatsenco",
+      "email": "k.yatsenco@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Moto\\": "src/"
+    }
+  }
+}
