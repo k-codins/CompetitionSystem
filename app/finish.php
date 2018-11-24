@@ -1,17 +1,16 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../data/database.php';
 
-use Moto\GroupManager;
-use Moto\ResultManager;
+use Moto\Service\ResultsManager;
+use Moto\Service\RoundGenerator;
 
-$groupManager = new GroupManager($participants);
+$roundGenerator = new RoundGenerator();
+$participantsWithRounds = $roundGenerator->addRoundsResultToParticipants(3);
 
-$groupedParticipants = $groupManager->getResult();
+$resultManager = new ResultsManager($participantsWithRounds);
 
-$resultManager = new ResultManager($groupedParticipants, $groupManager);
+$sortedByTimeAndClassParticipants = $resultManager->getParticipantsSortedByTimeAndClass();
+$firstPlaces = $resultManager->getWinners();
 
-$result = $resultManager->getResult(3);
-print_r($result);
-
+var_dump($firstPlaces);

@@ -1,12 +1,14 @@
 <?php
 
-use Moto\GroupManager;
+use Moto\Service\ParticipantsManager;
+use Moto\Service\Sorter;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../data/database.php';
 
-$groupManager = new GroupManager($participants);
+$participantsManager = new ParticipantsManager();
+$participants = $participantsManager->getAll();
 
-$groupedParticipants = $groupManager->getResult();
+$sorter = new Sorter();
+$sortedByClass = $sorter->sortByField('class', $participants);
 
-print_r($groupedParticipants);
+var_dump($sortedByClass);
